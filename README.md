@@ -51,7 +51,7 @@ http://localhost:8080/tata/tipocambio
  
  **Response**:
  
- *Header*: Retorna un token que tiene un tiempo de expiración de 60 seg. y un valor encriptado que simula al usuario que esta realizando la trasacción.
+ *Header*: Retorna un token que tiene un tiempo de expiración de 180 seg. y un valor encriptado que simula al usuario que esta realizando la trasacción.
  
 
     [
@@ -139,16 +139,3 @@ http://localhost:8080/tata/tipocambio/actualizacion
     }
 
 ------------
-
-
-### Base de Datos H2 
-Para visualizar la información de la tabla en la base de datos embebida ingresar a siguiente url y colocar los valores especificados:
-- http://localhost:8080/tata/h2-console
-- Especificar el JDBC URL de acuerdo al archivo **application.properties**
-- Colocar el User Name de acuerdo al archivo **application.properties**
-- Colocar el Password de acuerdo al archivo **application.properties**
-
-------------
-
-
-
