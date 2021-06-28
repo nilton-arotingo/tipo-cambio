@@ -37,7 +37,7 @@ public class TipoCambioValidation implements ConstraintValidator<TipoCambioValid
 			return false;
 		}
 		
-		if (value.getMonedaOrigen().equals(value.getMonedaDestino())) {
+		if (value.getMonedaOrigen().equalsIgnoreCase(value.getMonedaDestino())) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate("{com.tata.validacion.tipocambio.monedasInvalid.message}").addConstraintViolation();
 			return false;
