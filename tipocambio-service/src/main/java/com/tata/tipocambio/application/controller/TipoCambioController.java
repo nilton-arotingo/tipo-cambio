@@ -54,7 +54,7 @@ public class TipoCambioController {
 	}
 	
 	@PostMapping("/actualizacion")
-	public ResponseEntity<Resultado> actualizarValorCambio(HttpServletRequest httpRequest, @RequestBody TipoCambioRequest request) {
+	public ResponseEntity<Resultado> actualizarValorCambio(HttpServletRequest httpRequest, @RequestBody @Valid TipoCambioRequest request) {
 		validarToken(httpRequest.getHeader(TOKEN));
 		return ResponseEntity.status(HttpStatus.OK).body(tipoCambioService.actualizarTipoCambio(request));
 	}

@@ -64,13 +64,14 @@ public class TipoCambioService implements ITipoCambioService {
 		
 		try {
 			List<TipoCambio> tiposCambios = tipoCambioRepository.findAll();
-			Map< String, BigDecimal> valorCambioMap = obtenerValoresDeCambios(tiposCambios, request.getMonedaOrigen(), request.getMonedaDestino());
+			Map< String, BigDecimal> valorCambioMap = obtenerValoresDeCambios(tiposCambios, 
+					request.getMonedaOrigen().toUpperCase(), request.getMonedaDestino().toUpperCase());
 			
 			return TipoCambioResponse.builder()
 					.monto(request.getMonto())
 					.montoConTipoCambio(request.getMonto().multiply(valorCambioMap.get(VALOR_OPERACION)).setScale(3, BigDecimal.ROUND_HALF_UP))
-					.monedaOrigen(request.getMonedaOrigen())
-					.monedaDestino(request.getMonedaDestino())
+					.monedaOrigen(request.getMonedaOrigen().toUpperCase())
+					.monedaDestino(request.getMonedaDestino().toUpperCase())
 					.tipoCambio(valorCambioMap.get(TIPO_CAMBIO).setScale(2, BigDecimal.ROUND_HALF_UP))
 					.build();
 			
@@ -83,7 +84,8 @@ public class TipoCambioService implements ITipoCambioService {
 	@Override
 	public Resultado actualizarTipoCambio(TipoCambioRequest request) {
 		
-		TipoCambio tipoCambio = tipoCambioRepository.findById(new TipoCambioPK(request.getMonedaOrigen(), request.getMonedaDestino()))
+		TipoCambio tipoCambio = tipoCambioRepository.findById(
+						new TipoCambioPK(request.getMonedaOrigen().toUpperCase(), request.getMonedaDestino().toUpperCase()))
 				.orElseThrow(()->new ElementNotFoundException("tipos monedas invalidos"));
 		
 		try {
