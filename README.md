@@ -23,7 +23,7 @@ Para ejecutar la aplicación debes realizar los siguientes pasos:
  
 3. Ingresar al proyecto por el terminal:
 
- `cd tipocambio-service`
+ `cd tipo-cambio/tipocambio-service`
 
 4. Ejecutar los 2 comandos Maven para compilar el proyecto:
 
